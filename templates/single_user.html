@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container h-100 d-flex flex-column">
+    <div class="row h-20">
+        <div class="card">
+            <div class="card-body">
+                <div class="row"></div>
+
+
+                <div class="col-2">
+                    {% if user.picture %}
+        
+                        <img src="{{ user.picture }}" width="65" height="80">
+    
+    
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1702988319113-051682d600a4?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="65" height="80">
+        
+                    {% endif %}
+                </div>
+                <div class="col-3">
+        
+                    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                </div>
+                </div>
+            </div>
+        <div class="col-lg-7"></div>
+
+    </div>
+   
+
+    <div class="row h-20" style="padding-top: 20px;">
+        <div class="col-1 align-self-end">
+
+            <form action="/single_user_edit/{{ user.id }}">
+            <button type="submit" class="btn btn-light">Edit</button>
+            </form>
+        </div>
+        <div class="col-1 align-self-end">
+            <form action="/single_user_delete/{{ user.id }}">
+            <button type="submit" class="btn btn-light">Delete</button>
+            </form>
+        </div>
+        <div class="col-10"></div>
+    
+    </div>
+    <div class="row text-dark">
+        <h2 class="text-dark">Posts</h2>
+
+    </div>
+    {% for post in user.posts %}
+    <div class="row">
+        
+
+        <a href = '/individual_post/{{ post.id }}' class="text-dark">{{post.title}}</a>
+      
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-2">
+            <form action="/post_form/{{ user.id }}">
+            <button type="submit" class="btn btn-light">Add Post</button>
+            </form>
+        </div>
+        <div class="col-2">
+            <form action="/add_tag">
+            <button type="submit" class="btn btn-light">Add tag</button>
+    <!-- <form action="/add_tag/{{ user.id }}">
+        <button type="submit">Add tag</button> -->
+            </form>
+        </div>
+        <div class="col-3">
+            <form action="/all_tags">
+            <button type="submit" class="btn btn-light">See all tags</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+```

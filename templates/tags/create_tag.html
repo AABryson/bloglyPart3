@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h1>Create a tag</h1>
+    </div>
+    <div class="row">
+        <div class =col-7>
+            <form action="/submit_new_tag" method="post">
+                <!-- <form action="/submit_new_tag/{{id}}" method="post"></form> -->
+                <label>Name</label>
+                <input type="text" placeholder="Enter a name for the tag" name="tagname">
+        </div>
+        <div class="col-2">
+                <button type="submit" class="btn btn-dark">Add</button>
+            </form>
+        </div>
+        <!-- <div class="col-2">
+            <button class="btn btn-dark" buttonaction="/">Cancel</button>
+        </div> -->
+
+    </div>
+    <!-- <form action="/tags">
+        <button type="submit" style="display: inline-block;">Cancel</button>
+
+    </form> -->
+
+{% endblock %}
